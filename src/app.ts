@@ -4,7 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 
 /**modules imports */
-import { router } from "./routes/productsRoutes";
+import { router } from "./routes/indexRoutes";
 import db from './config/database';
 
 const app = express();
