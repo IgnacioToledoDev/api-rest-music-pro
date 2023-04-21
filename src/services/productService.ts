@@ -1,7 +1,6 @@
-import { response } from "express";
-import productModel from "./models/ProductModel";
-import ProductModel from "./models/ProductModel";
-import { Product } from "./types/productTypes";
+
+import ProductModel from "../models/ProductModel";
+import { Product } from "../types/productTypes";
 
 const insertProduct = async (product: Product) => {
     const responseInsert = await ProductModel.create(product);
@@ -15,12 +14,12 @@ const getAllProducts = async () => {
 };
 
 const getProductByID = async (id: string) => {
-    const responseGetProduct = await productModel.findOne({ _id: id })
+    const responseGetProduct = await ProductModel.findOne({ _id: id })
     return responseGetProduct;
 };
 
 const getProductByIDAndUpdate = async (id: string, data: Product) => {
-    const responseGetProduct = await productModel.findByIdAndUpdate(
+    const responseGetProduct = await ProductModel.findByIdAndUpdate(
         { _id: id },
         data,
         {
@@ -30,7 +29,7 @@ const getProductByIDAndUpdate = async (id: string, data: Product) => {
 };
 
 const getProductByIDAndRemove = async (id: string) => {
-    const responseGetProduct = await productModel.findByIdAndRemove({ _id: id });
+    const responseGetProduct = await ProductModel.findByIdAndRemove({ _id: id });
     return responseGetProduct;
 };
 

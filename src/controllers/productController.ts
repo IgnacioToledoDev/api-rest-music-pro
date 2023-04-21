@@ -1,6 +1,12 @@
 import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handle";
-import { insertProduct, getAllProducts, getProductByID, getProductByIDAndUpdate, getProductByIDAndRemove } from "../productService";
+import {
+    insertProduct,
+    getAllProducts,
+    getProductByID,
+    getProductByIDAndUpdate,
+    getProductByIDAndRemove
+} from "../services/productService";
 
 
 const getProducts = async (req: Request, res: Response) => {
