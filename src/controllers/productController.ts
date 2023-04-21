@@ -1,50 +1,57 @@
 import { Request, Response } from "express";
+import { handleHttp } from "../utils/error.handle";
+import { insertProduct, getAllProducts, getProductByID, getProductByIDAndUpdate, getProductByIDAndRemove } from "../productService";
 
 
-const getProducts = (req: Request, res: Response) => {
+const getProducts = async (req: Request, res: Response) => {
     try {
-        const message = 'Aqui_iran_los_productos';
-        res.status(200);
-        res.send(message);
+        const product = await getAllProducts();
+        res.send(product);
     }
     catch (e) {
-        res.send(`Oh a ocurrido un error ${e}`);
+        handleHttp(res, `Oh a ocurrido un error ${e},`);
     };
 };
 
-const getProduct = (req: Request, res: Response) => {
+const getProduct = async ({ params }: Request, res: Response) => {
     try {
-        res.status(200);
-        res.send('Aqui_ira_el_producto_por_ID');
+        const { id } = params;
+        const product = await getProductByID(id);
+        return res.send(product);
     }
     catch (e) {
-        res.send(`Oh a ocurrido un error ${e}`);
+        handleHttp(res, `Oh a ocurrido un error ${e} en getProduct`);
     };
 };
 
-const addProduct = (req: Request, res: Response) => {
+const addProduct = async ({ body }: Request, res: Response) => {
     try {
-        //TODO
+        const product = insertProduct(body);
+        res.send(product);
     } catch (e) {
-        //TODO
+        handleHttp(res, `Oh a ocurrido un error ${e} en addProduct`, e);
     };
 };
 
-const updateProduct = (req: Request, res: Response) => {
+const updateProduct = async ({ params, body }: Request, res: Response) => {
     try {
-        //TODO
+        const { id } = params;
+        const product = await getProductByIDAndUpdate(id, body)
+        res.send(product);
     }
     catch (e) {
-        //TODO
+        handleHttp(res, `Oh a ocurrido un error ${e} en uptadeProduct`);
     };
 };
 
-const deleteProduct = (req: Request, res: Response) => {
+const deleteProduct = async ({ params }: Request, res: Response) => {
     try {
-        //TODO
+        const { id } = params;
+        const product = await getProductByIDAndRemove(id);
+        res.send(product);
     }
     catch (e) {
-        //TODO
+        handleHttp(res, `Oh a ocurrido un error en ${e} en deleteProduct`);
     };
 };
 

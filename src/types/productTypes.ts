@@ -1,3 +1,10 @@
 export interface Product {
-    //TODO
+    series: string,
+    code: string,
+    name: string,
+    brand: string,
+    image: string,
+    description: string,
+    amount: number,
+    price: number
 };
