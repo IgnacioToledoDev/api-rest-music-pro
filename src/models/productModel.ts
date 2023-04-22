@@ -26,7 +26,6 @@ const ProductSchema = new Schema<Product>(
         },
         description: {
             type: String,
-            required: true
         },
         amount: {
             type: Number,

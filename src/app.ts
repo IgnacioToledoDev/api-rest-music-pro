@@ -20,8 +20,9 @@ db().then(() => console.log('Connexion ready')).catch((err) => console.log(`Oh a
 
 /** App use */
 app.use(bodyParser.json());
-app.use(router);
 app.use(cors());
+app.use(router);
+
 
 //Init server
 app.listen(port, () => console.log(`Server on port ${port}`));
