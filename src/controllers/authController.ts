@@ -12,7 +12,16 @@ const registerCtrl = async ({ body }: Request, res: Response) => {
     }
 };
 
-const loginCtrl = async (req: Request, res: Response) => { };
+const loginCtrl = async ({ body }: Request, res: Response) => {
+    try {
+        const { email, password } = body;
+        const user = await loginUser({ email, password });
+        res.send(user);
+    }
+    catch (e) {
+        handleHttp(res, `Oh a ocurrido un error ${e}`);
+    };
+};
 
 const getAllUsers = async (req: Request, res: Response) => {
     try {

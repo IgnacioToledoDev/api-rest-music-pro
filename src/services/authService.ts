@@ -1,6 +1,6 @@
 import UserModel from '../models/userModel';
 import { encrypt, verified } from '../utils/pass.handle';
-import { User } from './../types/userTypes';
+import { Auth, User } from './../types/userTypes';
 
 const registerNewUser = async ({ email, password, username }: User) => {
     const checkIs = await UserModel.findOne({ email });
@@ -14,7 +14,17 @@ const registerNewUser = async ({ email, password, username }: User) => {
     return newUser;
 };
 
-const loginUser = async () => { };
+const loginUser = async ({ email, password }: Auth) => {
+    const checkIs = await UserModel.findOne({ email });
+    if (!checkIs) return 'Already_user';
+
+    const passwordHash = checkIs.password;
+    const isCorrect = await verified(password, passwordHash);
+
+    if (!isCorrect) return "PASSWORD_INCORRECT"
+
+    return checkIs;
+};
 
 const getUsers = async () => {
     const responseGetUsers = await UserModel.find();

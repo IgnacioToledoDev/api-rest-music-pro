@@ -1,10 +1,10 @@
 # api-rest-music-pro
 
 INSTALL DEPENDENCIES:
-- npm install
+code - npm install
 
 RUN PROYECT:
-- npm run dev
+code - npm run dev
 
 You need .env with 
 PORT=8080 #example
