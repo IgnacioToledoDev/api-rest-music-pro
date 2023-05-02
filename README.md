@@ -1,16 +1,25 @@
 # api-rest-music-pro
 
-INSTALL DEPENDENCIES:
-code - npm install
+## Install dependencies:
 
-RUN PROYECT:
-code - npm run dev
+```bash
+npm install
+```
+
+## Run proyect:
+
+```bash
+npm run dev
+```
+
+## Enviroment
 
 You need .env with 
 PORT=8080 #example
 DB_URI=YOUR_DATABASE_OF_MONGODB/
 
 
+## TODO
 TODO FIXED BUGS
 TODO -> ADD IMG ON STORAGE
 TODO OPTIONAL -> CREATE COOKIES FOR USER
